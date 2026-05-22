@@ -148,7 +148,11 @@ export function HomePage() {
               {/* LADO DIREITO: Botão de Ação Inteligente */}
               <div className="w-full md:w-auto">
                 <Link
-                  to={`/spectate/${game.id}`}
+                  to={
+                    isFinished
+                      ? `/game-details/${game.id}`
+                      : `/spectate/${game.id}`
+                  }
                   className={cn(
                     'px-5 py-2.5 rounded-lg text-sm font-bold tracking-wide transition-all duration-200 block text-center min-w-[140px]',
                     isFinished
