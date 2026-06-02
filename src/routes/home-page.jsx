@@ -29,7 +29,7 @@ export function HomePage() {
   return (
     <div
       className={cn(
-        'flex flex-col gap-6 py-8 px-4 bg-zinc-950 min-h-screen text-white flex-1'
+        'flex flex-col gap-6 py-8 px-4 bg-zinc-900/50 min-h-screen text-white flex-1'
       )}
     >
       {/* Cabeçalho com Linha Neon Discreta */}
