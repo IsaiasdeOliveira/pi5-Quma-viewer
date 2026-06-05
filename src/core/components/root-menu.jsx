@@ -9,7 +9,7 @@ export function RootMenu() {
   const resolvedPath = useResolvedPath();
 
   return (
-    <div className={cn('bg-neutral-900 text-white')}>
+    <div className={cn('bg-neutral-700 text-white')}>
       <Container>
         <nav id={'root-menu'} className={cn('flex flex-row gap-4')}>
           <Link
@@ -17,10 +17,10 @@ export function RootMenu() {
             className={cn(
               'text-lg',
               'p-2 px-4',
-              'hover:bg-neutral-700',
+              'hover:bg-neutral-500',
               'transition-all',
               {
-                'bg-neutral-700': resolvedPath.pathname === '/',
+                'bg-neutral-500': resolvedPath.pathname === '/',
               }
             )}
           >
@@ -31,10 +31,10 @@ export function RootMenu() {
             className={cn(
               'text-lg',
               'p-2 px-4',
-              'hover:bg-neutral-700',
+              'hover:bg-neutral-500',
               'transition-all',
               {
-                'bg-neutral-700': resolvedPath.pathname.startsWith('/about'),
+                'bg-neutral-500': resolvedPath.pathname.startsWith('/about'),
               }
             )}
           >
@@ -45,10 +45,10 @@ export function RootMenu() {
             className={cn(
               'text-lg',
               'p-2 px-4',
-              'hover:bg-neutral-700',
+              'hover:bg-neutral-500',
               'transition-all',
               {
-                'bg-neutral-700': resolvedPath.pathname.startsWith('/player'),
+                'bg-neutral-500': resolvedPath.pathname.startsWith('/player'),
               }
             )}
           >

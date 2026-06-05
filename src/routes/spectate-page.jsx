@@ -4,7 +4,7 @@ import { Typography } from '@ui/text/typography';
 import { useParams } from 'react-router';
 
 export function SpectatePage() {
-    const {gameId} = useParams();
+  const { gameId } = useParams();
   return (
     <div className={cn('flex flex-col gap-4 py-8', 'flex-1')}>
       <Typography
