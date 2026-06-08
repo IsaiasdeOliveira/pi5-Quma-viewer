@@ -1,4 +1,4 @@
-# QumAI - Arena Viewer (Frontend PI 5)
+# QumAI - Arena Viewer (Frontend)
 
 Este repositório contém a aplicação de interface gráfica (Frontend) do projeto **QumAI**, desenvolvida para o campeonato da disciplina de Projeto Integrador V. 
 
