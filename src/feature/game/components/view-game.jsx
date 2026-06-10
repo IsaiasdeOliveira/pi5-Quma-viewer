@@ -2,12 +2,20 @@ import { useGameContext } from '../context/game-context';
 import { useGameSocket } from '../hooks/useGameSocket';
 import { Typography } from '@ui/text/typography';
 import { cn } from '@core/helpers';
+<<<<<<< HEAD
 import { useNavigate } from 'react-router-dom'; // 1. Hook de navegação adicionado
+=======
+
+import { useNavigate } from 'react-router-dom'; // 1. Hook de navegação adicionado
+
+import { apiClient } from '@core/helpers/fetch';
+import { useEffect, useState } from 'react';
+>>>>>>> ba770de3a45a7f204344eba576f72b62e497c254
 
 export function ViewGame({ gameId }) {
   const { spectator } = useGameContext();
   const navigate = useNavigate(); // 2. Instância de navegação
-  
+
   const { connected, gameState } = useGameSocket(
     gameId,
     spectator?.[gameId]?.spectator_access_token || null
@@ -97,7 +105,7 @@ export function ViewGame({ gameId }) {
             asTag={'h1'}
             className="text-xl font-black text-zinc-100 tracking-wide mt-0.5"
           >
-            Arena do Conhecimento
+            Partida
           </Typography>
           <span className="text-xs font-mono text-zinc-500 mt-1 bg-zinc-900/60 px-2 py-1 rounded border border-zinc-800 break-all inline-block">
             Partida ID:{' '}
@@ -107,7 +115,6 @@ export function ViewGame({ gameId }) {
 
         {/* STATUS DA CONEXÃO & BOTÃO DE DETALHES */}
         <div className="flex items-center gap-3">
-          
           {/* 3. Renderização Condicional do Botão (Aparece apenas quando FINISHED) */}
           {statusPartida === 'FINISHED' && (
             <button
@@ -246,7 +253,7 @@ export function ViewGame({ gameId }) {
           <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl flex flex-col justify-center items-center">
             <div className="flex justify-between items-center border-b border-zinc-800 pb-3 w-full mb-4">
               <h3 className="font-bold text-sm tracking-wide text-zinc-300 font-mono">
-                🏫 MONITOR DE SALAS DE AULA
+                MONITOR DO TABULEIRO - MOVIMENTAÇÕES EM TEMPO REAL
               </h3>
             </div>
 
