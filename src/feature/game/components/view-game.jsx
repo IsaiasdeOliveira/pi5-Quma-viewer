@@ -2,17 +2,16 @@ import { useGameContext } from '../context/game-context';
 import { useGameSocket } from '../hooks/useGameSocket';
 import { Typography } from '@ui/text/typography';
 import { cn } from '@core/helpers';
-<<<<<<< HEAD
+
 import { useNavigate } from 'react-router-dom'; // 1. Hook de navegação adicionado
-=======
+
 import { apiClient } from '@core/helpers/fetch';
 import { useEffect, useState } from 'react';
->>>>>>> 63d127ac6cdc6091e2467dc889fa41750a32db4f
 
 export function ViewGame({ gameId }) {
   const { spectator } = useGameContext();
   const navigate = useNavigate(); // 2. Instância de navegação
-  
+
   const { connected, gameState } = useGameSocket(
     gameId,
     spectator?.[gameId]?.spectator_access_token || null
@@ -112,7 +111,6 @@ export function ViewGame({ gameId }) {
 
         {/* STATUS DA CONEXÃO & BOTÃO DE DETALHES */}
         <div className="flex items-center gap-3">
-          
           {/* 3. Renderização Condicional do Botão (Aparece apenas quando FINISHED) */}
           {statusPartida === 'FINISHED' && (
             <button

@@ -8,8 +8,11 @@ export function useGameSocket(gameId, token) {
   const [mounted, setMounted] = useState(false);
 
   const reconnectTimeout = useRef(null);
-
   const webSocketRef = useRef(null);
+  
+  // 🔥 NOVO: Controle de tentativas de reconexão
+  const retryCount = useRef(0);
+  const MAX_RETRIES = 3; 
 
   useEffect(() => {
     if (!gameId || !token || !mounted) return;
@@ -24,6 +27,7 @@ export function useGameSocket(gameId, token) {
 
       ws.onopen = () => {
         setConnected(true);
+        retryCount.current = 0; // 🔥 Reseta o contador se conectar com sucesso!
       };
 
       ws.onmessage = (event) => {
@@ -38,12 +42,26 @@ export function useGameSocket(gameId, token) {
         }
       };
 
-      ws.onclose = () => {
+      ws.onclose = (event) => {
         setConnected(false);
-        // Reconecta automaticamente após 2 segundos se a partida ainda estiver ativa
-        reconnectTimeout.current = setTimeout(() => {
-          if (gameId) connect();
-        }, 2000);
+        
+        // 🔥 TRAVA 1: Se o servidor encerrou a partida de propósito, não reconecta!
+        if (event.code === 1000 || event.code === 1008) {
+            console.log("Partida encerrada ou não encontrada. Conexão fechada.");
+            return; 
+        }
+
+        // 🔥 TRAVA 2: Só reconecta se não estourou o limite de 3 vezes
+        if (retryCount.current < MAX_RETRIES) {
+            retryCount.current += 1;
+            console.warn(`Tentando reconectar... (${retryCount.current}/${MAX_RETRIES})`);
+            
+            reconnectTimeout.current = setTimeout(() => {
+              if (gameId) connect();
+            }, 2000);
+        } else {
+            console.error("Limites de reconexão esgotados. A partida provavelmente não existe mais.");
+        }
       };
 
       ws.onerror = (err) => {
