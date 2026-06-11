@@ -55,11 +55,19 @@ Para iniciar o visualizador da Arena em sua máquina, certifique-se de ter o **N
    ```bash
    npm install
    ```
-3. Inicie o servidor de desenvolvimento local:
+3. Configuração das Variáveis de Ambiente (.env):
+ * Na raiz do projeto frontend, crie um arquivo chamado .env (você pode se basear no arquivo .env.example, se houver).
+
+ * Dentro dele, adicione a URL da API central do campeonato seguindo o padrão:
+   ```bash
+   VITE_API_BASE_URL="https://pi5-api-production.up.railway.app"
+   ```
+   
+4. Inicie o servidor de desenvolvimento local:
    ```bash
    npm run dev
    ```
-4. Abra o seu navegador e acesse o endereço gerado no terminal (geralmente http://localhost:5173).
+5. Abra o seu navegador e acesse o endereço gerado no terminal (geralmente http://localhost:5173).
 
 ## Documentação de Entrega e Decisões de Projeto
 Para uma explicação detalhada sobre as motivações de design, a estrutura de montagem de cada componente, tratamento de falhas e os critérios obrigatórios avaliados pelo professor, acesse o arquivo **[REPORT.md](./REPORT.md)** presente na raiz deste repositório.
